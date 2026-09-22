@@ -1,5 +1,5 @@
 .container {
-    background-color: #f3f4f6;
+    background-color: #F3F4F6;
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
@@ -11,37 +11,42 @@
     font-size: 30px;
     color: #374151;
     font-weight: 600;
-    margin: 10px 0;
+    margin: 10px 0
+    
 }
 
-.titleBold {
+.title-bold {
     font-weight: 900;
     color: #6D28D9;
 }
 
-.btnNuevaCita {
+.btn-nueva-cita{
     display: block;
     background-color: #6D28D9;
     padding: 15px;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    width: 100%;
     max-width: 500px;
+    transition: background-color 0.2 ease;
+    
+}
+.btn-nueva-cita:hover{
+    background-color: #5b21b6;
 }
 
-.btnTextoNuevaCita {
+.btn-texto-nueva-cita{
     text-align: center;
     color: #FFF;
     font-size: 18px;
     font-weight: 900;
-    text-transform: uppercase;
+    text-decoration: uppercase;
     letter-spacing: 1px;
 }
 
-.noPacientes {
+.noPacientes{
     margin-top: 40px;
     text-align: center;
     font-size: 24px;
@@ -49,7 +54,7 @@
     color: #4B5563;
 }
 
-.listado {
+.listado{
     margin-top: 50px;
     max-width: 600px;
     display: flex;
@@ -57,7 +62,7 @@
     gap: 15px;
 }
 
-.modelOverlay {
+.modal-overlay{
     position: fixed;
     top: 0;
     left: 0;
@@ -71,13 +76,13 @@
     padding: 20px;
 }
 
-.modalContent {
-    background-color: 12px;
-    border-radius: 12px;
+.modal-content{
+    background-color: #FFF;
+    border-radius: 10px;
     padding: 25px;
     width: 100%;
     max-width: 650px;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+    box-shadow: 0px 20px 25px -5px rgb(0 0 0 /0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
 }
