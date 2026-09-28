@@ -4,7 +4,7 @@ import './css/main.css';
 
 function App () {
 
-  const [modalVisible, setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <main className= "container">
       <h1 className='titulo'>
@@ -18,7 +18,10 @@ function App () {
       {modalVisible && (
         <div className='modal-overlay' role='dialog' aria-modal='true'>
         <div className='modal-content'>
-        <Formulario/>
+        <Formulario 
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        />
         </div>
       </div>
       )}
