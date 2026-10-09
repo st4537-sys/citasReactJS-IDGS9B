@@ -4,55 +4,17 @@ import { useState, useEffect } from "react";
 import '../css/formulario.css';
 
 
-const Formulario = ({ modalVisible, setmodalVisible, pacientes, setPacientes}) => {
+const Formulario = ({ modalVisible, setmodalVisible}) => {
     const [paciente, setPaciente] = useState('');
     const [propietario, setPropietario] = useState('');
     const [correo, setCorreo] = useState('');
     const [telefono, setTelefono] = useState('');
     const [fechaAlta, setFechaAlta] = useState('');
     const [sintomas, setSintomas] = useState('');
-    
 
-    /**
-     * una variable que guarda el valor del state
-     * funcion que modifica el state
-     * value=state
-     * .trim = borrar espacios en blanco
-     * [...variable] = copea la informacion de el array anterior
-     */
-
-    const handleCita = (e) => {
+    const handleCitas = (e) => {
         e.preventDefault();
-
-        if([paciente.trim(), propietario.trim(), telefono.trim(), 
-            correo.trim(), fechaAlta.trim(), sintomas.trim()].includes('')){
-                console.log('Todos los campos son obligatorios');
-                window.alert('Error: Todos los campos son obligatorios');
-                return;
-        }
-
-        //Create an object with all values in the form
-        const nuevoPaciente = {
-            paciente,
-            propietario,
-            telefono,
-            correo,
-            fechaAlta,
-            sintomas
-
-        };
-
-        nuevoPaciente.id = Date.now();
-        console.log(nuevoPaciente);
-
-        //Save all new records
-        //state = add my object into the array
-
-        setPacientes([...pacientes, nuevoPaciente]);
-        setmodalVisible(false);
- 
     }
-
     return(
         <div className="formulario-contenido">
             <h2 className="formulario-titulo">Nueva 
@@ -65,7 +27,7 @@ const Formulario = ({ modalVisible, setmodalVisible, pacientes, setPacientes}) =
                 <span className="formulario-btn-texto-cancelar">Cancelar</span>
             </button>
 
-            <form onSubmit={(e) => handleCita(e)}>
+            <form onSubmit={(e) => handleCitas(e)}>
                 <div className="formulario-campo">
                     <label
                     htmlFor="paciente"
@@ -75,7 +37,7 @@ const Formulario = ({ modalVisible, setmodalVisible, pacientes, setPacientes}) =
                     id="paciente"
                     type="text"
                     className="formulario-input"
-                    placeholder="perrito candy"
+                    placeholder="perrito Poppy"
                     value={paciente}
                     onChange={(e) => {setPaciente(e.target.value) }}
                     />
@@ -103,7 +65,7 @@ const Formulario = ({ modalVisible, setmodalVisible, pacientes, setPacientes}) =
                     id="correo"
                     type="email"
                     className="formulario-input"
-                    placeholder="usuario@gmail.com"
+                    placeholder="usario@gmail.com"
                     value={correo}
                     onChange={(e) => {setCorreo(e.target.value) }}
                     />
@@ -117,7 +79,7 @@ const Formulario = ({ modalVisible, setmodalVisible, pacientes, setPacientes}) =
                     id="telefono"
                     type="tel"
                     className="formulario-input"
-                    placeholder="4491112233"
+                    placeholder="123456789"
                     value={telefono}
                     onChange={(e) => {setTelefono(e.target.value) }}
                     />
@@ -150,7 +112,6 @@ const Formulario = ({ modalVisible, setmodalVisible, pacientes, setPacientes}) =
                     rows={4}
                     />
                 </div>
-
                 <button
                 type="submit"
                 className="formulario-btn-submit"
@@ -162,4 +123,4 @@ const Formulario = ({ modalVisible, setmodalVisible, pacientes, setPacientes}) =
 };
 
 
-export default Formulario;
+export default Formulario
