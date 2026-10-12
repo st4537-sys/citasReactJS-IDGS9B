@@ -4,17 +4,55 @@ import { useState, useEffect } from "react";
 import '../css/formulario.css';
 
 
-const Formulario = ({ modalVisible, setmodalVisible}) => {
+const Formulario = ({ modalVisible, setModalVisible, pacientes, setPacientes}) => {
     const [paciente, setPaciente] = useState('');
     const [propietario, setPropietario] = useState('');
     const [correo, setCorreo] = useState('');
     const [telefono, setTelefono] = useState('');
     const [fechaAlta, setFechaAlta] = useState('');
     const [sintomas, setSintomas] = useState('');
+    
 
-    const handleCitas = (e) => {
+    /**
+     * una variable que guarda el valor del state
+     * funcion que modifica el state
+     * value=state
+     * .trim = borrar espacios en blanco
+     * [...variable] = copea la informacion de el array anterior
+     */
+
+    const handleCita = (e) => {
         e.preventDefault();
+
+        if([paciente.trim(), propietario.trim(), telefono.trim(), 
+            correo.trim(), fechaAlta.trim(), sintomas.trim()].includes('')){
+                console.log('Todos los campos son obligatorios');
+                window.alert('Error: Todos los campos son obligatorios');
+                return;
+        }
+
+        //Create an object with all values in the form
+        const nuevoPaciente = {
+            paciente,
+            propietario,
+            telefono,
+            correo,
+            fechaAlta,
+            sintomas
+
+        };
+
+        nuevoPaciente.id = Date.now();
+        console.log(nuevoPaciente);
+
+        //Save all new records
+        //state = add my object into the array
+
+        setPacientes([...pacientes, nuevoPaciente]);
+        setModalVisible(false);
+ 
     }
+
     return(
         <div className="formulario-contenido">
             <h2 className="formulario-titulo">Nueva 
@@ -22,12 +60,12 @@ const Formulario = ({ modalVisible, setmodalVisible}) => {
             </h2>
             <button
                 className="formulario-btn-cancelar"
-                onClick={() => { setmodalVisible(false) }}
+                onClick={() => { setModalVisible(false) }}
             >
                 <span className="formulario-btn-texto-cancelar">Cancelar</span>
             </button>
 
-            <form onSubmit={(e) => handleCitas(e)}>
+            <form onSubmit={(e) => handleCita(e)}>
                 <div className="formulario-campo">
                     <label
                     htmlFor="paciente"
@@ -51,7 +89,7 @@ const Formulario = ({ modalVisible, setmodalVisible}) => {
                     id="propietario"
                     type="text"
                     className="formulario-input"
-                    placeholder="Leslie Rodriguez"
+                    placeholder="Zuriel Valencia"
                     value={propietario}
                     onChange={(e) => {setPropietario(e.target.value) }}
                     />
@@ -65,7 +103,7 @@ const Formulario = ({ modalVisible, setmodalVisible}) => {
                     id="correo"
                     type="email"
                     className="formulario-input"
-                    placeholder="usario@gmail.com"
+                    placeholder="tilininsano@gmail.com"
                     value={correo}
                     onChange={(e) => {setCorreo(e.target.value) }}
                     />
@@ -112,6 +150,7 @@ const Formulario = ({ modalVisible, setmodalVisible}) => {
                     rows={4}
                     />
                 </div>
+
                 <button
                 type="submit"
                 className="formulario-btn-submit"
@@ -123,4 +162,4 @@ const Formulario = ({ modalVisible, setmodalVisible}) => {
 };
 
 
-export default Formulario
+export default Formulario;
